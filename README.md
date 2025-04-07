@@ -13,4 +13,4 @@ Repositório do projeto fullstack do 5º período do curso de Gestão da Tecnolo
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/usuario/trabalhoFullStack.git
+   git clone https://github.com/MayconD27/trabalhoFullStack
