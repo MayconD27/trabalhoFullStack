@@ -21,7 +21,7 @@ public class AuthController {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             if (user.getPassword().equals(loginRequest.getPassword())) {
-                return "Login sucessful!";
+                return "Login sucessfull!";
             }
         }
         return "Invalid email or password!";
