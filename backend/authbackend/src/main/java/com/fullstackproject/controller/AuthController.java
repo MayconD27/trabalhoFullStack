@@ -15,13 +15,15 @@ public class AuthController {
     private UserRepository userRepository;
 
     @PostMapping("/login")
-    public String login(@RequestBody User user) {
-        Optional<User> user = userRepository.findByEmail(user.getEmail());
+    public String login(@RequestBody User loginRequest) {
+        Optional<User> userOptional = userRepository.findByEmail(loginRequest.getEmail());
 
-        if (user.isPresent() && user.get().getPassword().equals(user.getEmail())) {
-            return "Login sucessful!";
-        } else {
-            return "Invalid email or password!";
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (user.getPassword().equals(loginRequest.getPassword())) {
+                return "Login sucessful!";
+            }
         }
+        return "Invalid email or password!";
     }
 }
