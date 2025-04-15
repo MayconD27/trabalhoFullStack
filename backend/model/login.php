@@ -1,4 +1,11 @@
 <?php
+
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Content-Type: application/json");
+
 session_start();
 include_once '../model/db.php';
 
@@ -17,13 +24,11 @@ function login($data) {
 
         if (!empty($usuario)) {
             unset($usuario['senha']);
-            $_SESSION['usuario'] = $usuario['id']; // ou $usuario se quiser tudo
-
-            // Força o cookie de sessão (para evitar problemas de SameSite)
+            $_SESSION['usuario'] = $usuario; 
             setcookie("PHPSESSID", session_id(), [
                 'path' => '/',
                 'httponly' => true,
-                'samesite' => 'Lax' // ou 'None' com 'secure' => true se HTTPS
+                'samesite' => 'Lax'
             ]);
 
             return $usuario;

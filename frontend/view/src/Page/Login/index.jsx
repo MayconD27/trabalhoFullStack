@@ -7,21 +7,18 @@ export const Login = () => {
     const [senha, setSenha] = useState("");
     const [mensagem, setMensagem] = useState("");
     const navigate = useNavigate();
-
-    // Verificar se o usuário já está logado ao acessar a página de login
     useEffect(() => {
         const verificarSessao = async () => {
             try {
                 const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/checkSession.php", {
                     method: "GET",
-                    credentials: "include", // Inclui cookies na requisição
+                    credentials: "include",
                 });
 
                 const data = await response.json();
 
                 if (data.status) {
-                    // Caso o usuário já esteja logado, redireciona para a página principal
-                    navigate("/"); // Redireciona para a Main
+                    navigate("/");
                 }
             } catch (error) {
                 console.error("Erro ao verificar a sessão:", error);
@@ -37,6 +34,7 @@ export const Login = () => {
         try {
             const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/login.php", {
                 method: "POST",
+                 credentials: "include",
                 body: JSON.stringify({ email, senha }),
             });
 
@@ -45,9 +43,9 @@ export const Login = () => {
             if (data.status) {
                 setMensagem(data.message);
                 console.log("Login realizado com sucesso:", data.response);
-                navigate("/"); // Redireciona para a página principal
+                navigate("/");
             } else {
-                setMensagem(data.message); // Exibe erro caso o login falhe
+                setMensagem(data.message);
             }
         } catch (err) {
             console.error("Erro no login:", err);
