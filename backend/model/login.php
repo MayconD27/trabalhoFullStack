@@ -30,13 +30,30 @@ function login($data) {
                 'httponly' => true,
                 'samesite' => 'Lax'
             ]);
-
+            registrarLogLogin("Login efetuado com sucesso",$usuario['id']);
             return $usuario;
         } else {
+            registrarLogLogin("Falha ao realizar o login, email ou senha","");
             return [];
         }
     } catch (Exception $e) {
         error_log("Erro no login: " . $e->getMessage());
+        registrarLogLogin("Erro ao realizar login","");
         return ['error' => 'Erro ao realizar login.'];
+    }
+}
+
+
+function registrarLogLogin($acao, $usuario_id = null) {
+    global $pdo;
+
+    try {
+        $sql = "INSERT INTO logs (usuario_id, acao, data_hora) VALUES (:usuario_id, :acao, NOW())";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':usuario_id', $usuario_id, is_null($usuario_id) ? PDO::PARAM_NULL : PDO::PARAM_INT);
+        $stmt->bindParam(':acao', $acao, PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (Exception $e) {
+        error_log("Erro ao registrar log: " . $e->getMessage());
     }
 }

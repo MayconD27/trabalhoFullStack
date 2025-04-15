@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './main.css';
 
 export const Main = () => {
     const [mensagem, setMensagem] = useState("");
@@ -12,11 +13,10 @@ export const Main = () => {
                     method: "GET",
                     credentials: "include",
                 });
-
                 const data = await response.json();
 
                 if (data.status) {
-                    setMensagem(`Bem-vindo, ${data.usuario.nome_usuario}!`); 
+                    setMensagem(data.usuario.nome_usuario);
                 } else {
                     console.log("Sessão inválida:", data.message);
                     navigate("/login");
@@ -37,13 +37,12 @@ export const Main = () => {
                 credentials: "include",
             });
 
-            const data = await response.json();
+            
 
-            if (data.status) {
-                navigate("/login");
-            } else {
-                console.error("Erro ao realizar logout.");
-            }
+            navigate("/login");
+            window.location.reload();
+        
+            
         } catch (error) {
             console.error("Erro ao fazer logout:", error);
         }
@@ -52,7 +51,10 @@ export const Main = () => {
     return (
         <div>
             <h1>Página Principal</h1>
-            {mensagem && <p>{mensagem}</p>}
+            <div className="msg">
+                Bem vindo,
+                <span className="name_user">{mensagem}</span>!
+            </div>
             <button onClick={handleLogout}>Sair</button>
         </div>
     );

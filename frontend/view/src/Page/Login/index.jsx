@@ -14,9 +14,7 @@ export const Login = () => {
                     method: "GET",
                     credentials: "include",
                 });
-
                 const data = await response.json();
-
                 if (data.status) {
                     navigate("/");
                 }
@@ -27,10 +25,8 @@ export const Login = () => {
 
         verificarSessao();
     }, [navigate]);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/login.php", {
                 method: "POST",
@@ -42,7 +38,6 @@ export const Login = () => {
 
             if (data.status) {
                 setMensagem(data.message);
-                console.log("Login realizado com sucesso:", data.response);
                 navigate("/");
             } else {
                 setMensagem(data.message);
@@ -56,33 +51,19 @@ export const Login = () => {
     return (
         <div className="container">
             <div className="login-box">
-                <h1>Login</h1>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="email">E-mail</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="senha">Senha</label>
-                        <input
-                            type="password"
-                            id="senha"
-                            name="senha"
-                            value={senha}
-                            onChange={(e) => setSenha(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button type="submit">Entrar</button>
-                </form>
-                {mensagem && <p>{mensagem}</p>}
+              <h1>Login</h1>
+              <form onSubmit={handleSubmit}>
+                  <div>
+                      <label htmlFor="email">E-mail</label>
+                      <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                  </div>
+                  <div>
+                      <label htmlFor="senha">Senha</label>
+                      <input type="password" id="senha" name="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required/>
+                  </div>
+                  <button type="submit">Entrar</button>
+              </form>
+              {mensagem && <p>{mensagem}</p>}
             </div>
         </div>
     );
