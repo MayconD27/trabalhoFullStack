@@ -1,12 +1,12 @@
 <?php
-include_once '../model/login.php'; // Certifique-se de que o caminho está correto.
+include_once '../model/login.php'; 
 session_start();
 
 header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Credentials: true");
 header("Content-Type: application/json");
 
-$user_id = $_SESSION['usuario']['id'] ?? null; // Evitar erro se `usuario` não estiver configurado.
+$user_id = $_SESSION['usuario']['id'] ?? null;
 
 if ($user_id) {
     registrarLogLogin("Usuário efetuou logout", $user_id);
