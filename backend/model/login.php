@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
 session_start();
-include_once '../model/db.php';
+include_once '../settings/db.php';
 
 function login($data) {
     global $pdo;
