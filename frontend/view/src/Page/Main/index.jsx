@@ -9,7 +9,7 @@ export const Main = () => {
     useEffect(() => {
         const verificarSessao = async () => {
             try {
-                const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/checkSession.php", {
+                const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/checkSession_controller.php", {
                     method: "GET",
                     credentials: "include",
                 });
@@ -32,7 +32,7 @@ export const Main = () => {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/logout.php", {
+            const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/logout_controller.php", {
                 method: "POST",
                 credentials: "include",
             });

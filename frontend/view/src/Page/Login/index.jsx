@@ -10,12 +10,13 @@ export const Login = () => {
     useEffect(() => {
         const verificarSessao = async () => {
             try {
-                const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/checkSession.php", {
+                const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/checkSession_controller.php", {
                     method: "GET",
                     credentials: "include",
                 });
                 const data = await response.json();
                 if (data.status) {
+                    console.log(1)
                     navigate("/");
                 }
             } catch (error) {
@@ -28,7 +29,7 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/login.php", {
+            const response = await fetch("http://localhost/Projeto/trabalhoFullStack/backend/controller/login_controller.php", {
                 method: "POST",
                  credentials: "include",
                 body: JSON.stringify({ email, senha }),
