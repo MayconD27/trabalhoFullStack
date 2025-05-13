@@ -1,6 +1,6 @@
 <?php
 include_once '../model/login_model.php'; 
-session_start();
+
 
 header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Credentials: true");
