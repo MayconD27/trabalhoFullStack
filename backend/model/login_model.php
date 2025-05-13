@@ -32,6 +32,32 @@ function login($data) {
             ]);
             registrarLogLogin("Login efetuado com sucesso",$usuario['id']);
             return $usuario;
+
+            // JWT HEADER
+            $header = [
+                'alg' => 'HS256',
+                'typ' => 'JWT'
+            ];
+            $header = json_encode($header);
+            $header = rtrim(strtr(base64_encode($header), '+/', '-_'), '=');
+
+            // JWT PAYLOAD
+            $payload = [
+                'username' => $user['username'],
+                'iat' => time(),
+                'exp' => time() + 3600
+            ];
+            $payload = json_encode($payload);
+            $payload = rtrim(strtr(base64_encode($payload), '+/', '-_'), '=');
+
+            // JWT SIGNATURE
+            $key = "key-just-for-test";
+            $signature = hash_hmac('sha256', "$header.$payload", $key, true);
+            $signature = rtrim(strtr(base64_encode($signature), '+/', '-_'), '=');
+
+            $jwt = "$header.$payload.$signature";
+            $_SESSION['jwt'] = $jwt;
+
         } else {
             registrarLogLogin("Falha ao realizar o login, email ou senha","");
             return [];
