@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-include_once "../model/login.php";
+include_once "../model/login_model.php";
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

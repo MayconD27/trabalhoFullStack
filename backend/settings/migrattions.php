@@ -1,4 +1,3 @@
-
 <?php
 function migrattions(){
     $version = 1;
