@@ -97,3 +97,4 @@ http://localhost/
 | Thiago Vasconcelos Almeida | 11379 |
 | Yure Lima de Souza | 15953 |
 | Guilherme Augusto Fonseca Magalhães | 15511 |
+| Vinícius Lenon Lino Oliveira | 15351 |
