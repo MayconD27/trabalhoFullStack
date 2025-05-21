@@ -32,6 +32,7 @@ Bootstrap
 
 JavaScript 
 
+
 Backend:
 
 PHP
@@ -67,6 +68,7 @@ Backend
 cd backend
 npm install
 
+
 🔽 3. Rodar o projeto
 
 Inicie o backend
@@ -79,7 +81,10 @@ Inicie o frontend
 cd frontend
 npm run dev
 
-Acesse o sistema no navegador em http://localhost/
+Acesse o sistema no navegador em 
+
+http://localhost/
+
 
 
 👨‍💻 Equipe
