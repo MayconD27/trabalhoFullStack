@@ -1,4 +1,4 @@
-# 💻 Projeto Full Stack - Parte 2
+# 💻 Projeto Full Stack
 
 Este repositório contém a segunda parte do projeto Full Stack desenvolvido como parte da disciplina do curso de Gestão da Tecnologia da Informação da FAPAM, no 5º período.
 
