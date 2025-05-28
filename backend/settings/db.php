@@ -1,11 +1,13 @@
 <?php
-    $host = '177.185.252.253';     
+    $host = '177.185.252.253';
+    $port = 48487;
     $db   = 'fullstack';
-    $user = 'root';          
-    $pass = 'SenhaForte123!';              
+    $user = 'admin';
+    $pass = 'admin';
     $charset = 'utf8mb4';
 
-    $bd = "mysql:host=$host;dbname=$db;charset=$charset";
+    $bd = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
+
 
     $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, 

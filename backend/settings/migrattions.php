@@ -9,13 +9,14 @@ migrattions();
 
 function createdb(){
     $host = '177.185.252.253';
+    $port = 48487;
     $dbname = 'fullstack';
-    $username = 'root';
-    $password = 'SenhaForte123!';
+    $username = 'admin';
+    $password = 'admin';
     $charset = 'utf8mb4';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Criar tabela usuarios
