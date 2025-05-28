@@ -13,40 +13,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 include_once "../model/login_model.php";
-
-try {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $json = file_get_contents('php://input');
-        $data = json_decode($json, true);
-
-        if (!isset($data['email']) || !isset($data['senha'])) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Email e senha são obrigatórios.']);
-            return;
-        }
-
-        $result = login($data);
-
-        if (!empty($result) && !isset($result['error'])) {
-            echo json_encode([
-                "status" => true,
-                "message" => "Sucesso ao efetuar o login",
-                "response" => $result
-            ]);
-        } else {
-            echo json_encode([
-                "status" => false,
-                "message" => "Usuário ou senha inválidos."
-            ]);
-        }
-    } else {
-        throw new Exception('Método de requisição inválido.');
+class Login_Control{
+    public function __construct(){
+        $this->$LOGIN = new Login_Model();
+        $this->login();
     }
-} catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode([
-        'status' => false,
-        'message' => 'Ocorreu um erro no servidor.',
-        'details' => $e->getMessage()
-    ]);
+    private function login(){
+        try {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $json = file_get_contents('php://input');
+                    $data = json_decode($json, true);
+
+                    if (!isset($data['email']) || !isset($data['senha'])) {
+                        http_response_code(400);
+                        echo json_encode(['error' => 'Email e senha são obrigatórios.']);
+                        return;
+                    }
+                    
+                    $result = $this->$LOGIN->login($data);
+
+                    if (!empty($result) && !isset($result['error'])) {
+                        echo json_encode([
+                            "status" => true,
+                            "message" => "Sucesso ao efetuar o login",
+                            "response" => $result
+                        ]);
+                    } else {
+                        echo json_encode([
+                            "status" => false,
+                            "message" => "Usuário ou senha inválidos."
+                        ]);
+                    }
+                } else {
+                    throw new Exception('Método de requisição inválido.');
+                }
+            } catch (Exception $e) {
+                http_response_code(500);
+                echo json_encode([
+                    'status' => false,
+                    'message' => 'Ocorreu um erro no servidor.',
+                    'details' => $e->getMessage()
+                ]);
+            }
+    }
+    
+
 }
+new Login_Control();
