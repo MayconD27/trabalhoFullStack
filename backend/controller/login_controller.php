@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 include_once "../model/login_model.php";
 class Login_Control{
     public function __construct(){
-        $this->$LOGIN = new Login_Model();
+        $this->LOGIN = new Login_Model();
         $this->login();
     }
     private function login(){
@@ -26,22 +26,24 @@ class Login_Control{
 
                     if (!isset($data['email']) || !isset($data['senha'])) {
                         http_response_code(400);
-                        echo json_encode(['error' => 'Email e senha são obrigatórios.']);
+                        echo json_encode(['error' => 'Email e senha são obrigatórios.','code' => 400]);
                         return;
                     }
                     
-                    $result = $this->$LOGIN->login($data);
+                    $result = $this->LOGIN->login($data);
 
                     if (!empty($result) && !isset($result['error'])) {
                         echo json_encode([
                             "status" => true,
                             "message" => "Sucesso ao efetuar o login",
-                            "response" => $result
+                            "response" => $result,
+                            "code" => 200
                         ]);
                     } else {
                         echo json_encode([
                             "status" => false,
-                            "message" => "Usuário ou senha inválidos."
+                            "message" => "Usuário ou senha inválidos.",
+                            "code" => 403
                         ]);
                     }
                 } else {
@@ -52,7 +54,8 @@ class Login_Control{
                 echo json_encode([
                     'status' => false,
                     'message' => 'Ocorreu um erro no servidor.',
-                    'details' => $e->getMessage()
+                    'details' => $e->getMessage(),
+                    'code' => 500
                 ]);
             }
     }

@@ -17,12 +17,14 @@ class CheckSession{
         echo json_encode([
             "status" => true,
             "message" => "Usuário está logado.",
-            "usuario" => $_SESSION['usuario']
+            "usuario" => $_SESSION['usuario'],
+            "code" => 200
         ]);
         } else {
             echo json_encode([
                 "status" => false,
-                "message" => "Usuário não está logado."
+                "message" => "Usuário não está logado.",
+                "code" => 401
             ]);
         }
     } 

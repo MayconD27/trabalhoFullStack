@@ -61,7 +61,7 @@ class Login_Model{
                 $_SESSION['jwt'] = $jwt;
 
             } else {
-                registrarLogLogin("Falha ao realizar o login, email ou senha","");
+                $this->registrarLogLogin("Falha ao realizar o login, email ou senha","");
                 return [];
             }
         } catch (Exception $e) {

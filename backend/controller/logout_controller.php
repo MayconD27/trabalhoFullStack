@@ -7,7 +7,7 @@ header("Content-Type: application/json");
 
 class Logout_control{
     public function __construct(){
-        $this->$LOGIN = new Login_Model();
+        $this->LOGIN = new Login_Model();
         $this->logout();
 
     }
@@ -15,7 +15,7 @@ class Logout_control{
         $user_id = $_SESSION['usuario']['id'] ?? null;
 
         if ($user_id) {
-            $this->$LOGIN->registrarLogLogin("Usuário efetuou logout", $user_id);
+            $this->LOGIN->registrarLogLogin("Usuário efetuou logout", $user_id);
         }
 
         session_unset();
@@ -23,7 +23,8 @@ class Logout_control{
 
         echo json_encode([
             "status" => true,
-            "message" => "Logout realizado com sucesso."
+            "message" => "Logout realizado com sucesso.",
+            "code" => 200
         ]);
     }
 }
