@@ -8,10 +8,10 @@ function migrattions(){
 migrattions();
 
 function createdb(){
-    $host = 'localhost';
+    $host = '177.185.252.253';
     $dbname = 'fullstack';
     $username = 'root';
-    $password = '';
+    $password = 'SenhaForte123!';
     $charset = 'utf8mb4';
 
 try {

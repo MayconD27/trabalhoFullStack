@@ -1,8 +1,8 @@
 <?php
-    $host = 'localhost';     
+    $host = '177.185.252.253';     
     $db   = 'fullstack';
     $user = 'root';          
-    $pass = '';              
+    $pass = 'SenhaForte123!';              
     $charset = 'utf8mb4';
 
     $bd = "mysql:host=$host;dbname=$db;charset=$charset";
