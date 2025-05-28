@@ -56,7 +56,7 @@ export const Login = () => {
               <form onSubmit={handleSubmit}>
                   <div>
                       <label htmlFor="email">E-mail</label>
-                      <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                      <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                   </div>
                   <div>
                       <label htmlFor="senha">Senha</label>
