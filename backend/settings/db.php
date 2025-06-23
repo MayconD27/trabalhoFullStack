@@ -2,8 +2,8 @@
     $host = '177.185.252.253';
     $port = 48487;
     $db   = 'fullstack';
-    $user = 'admin';
-    $pass = 'admin';
+    $user = 'root';
+    $pass = 'SenhaForte123!';
     $charset = 'utf8mb4';
 
     $bd = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
