@@ -1,5 +1,5 @@
 <?php
-    $host = '177.185.252.253';
+    $host = '177.185.252.69';
     $port = 48487;
     $db   = 'fullstack';
     $user = 'root';
